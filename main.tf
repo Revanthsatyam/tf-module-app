@@ -57,7 +57,7 @@ resource "aws_autoscaling_group" "bar" {
     version = "$Latest"
   }
 
-  tags {
+  tag {
     key                 = "Name"
     value               = local.name_prefix
     propagate_at_launch = true
