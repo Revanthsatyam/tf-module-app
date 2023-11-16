@@ -55,4 +55,4 @@ resource "aws_launch_template" "main" {
 #    id      = aws_launch_template.foobar.id
 #    version = "$Latest"
 #  }
-#}
+#
