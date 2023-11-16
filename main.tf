@@ -45,14 +45,21 @@ resource "aws_launch_template" "main" {
   }
 }
 
-#resource "aws_autoscaling_group" "bar" {
-#  availability_zones = ["us-east-1a"]
-#  desired_capacity   = 1
-#  max_size           = 1
-#  min_size           = 1
-#
-#  launch_template {
-#    id      = aws_launch_template.foobar.id
-#    version = "$Latest"
-#  }
-#}
+resource "aws_autoscaling_group" "bar" {
+  name                = "${local.name_prefix}-sg"
+  vpc_zone_identifier = var.subnet_ids
+  desired_capacity    = var.desired_capacity
+  max_size            = var.max_size
+  min_size            = var.min_size
+
+  launch_template {
+    id      = aws_launch_template.main.id
+    version = "$Latest"
+  }
+
+  tags {
+    key                 = "Name"
+    value               = local.name_prefix
+    propagate_at_launch = true
+  }
+}
