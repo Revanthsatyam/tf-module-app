@@ -125,7 +125,7 @@ resource "aws_lb_listener_rule" "public" {
 
   condition {
     host_header {
-      values = ["{var.env}.rdevops74.online"]
+      values = ["${var.env}.rdevops74.online"]
     }
   }
 }
