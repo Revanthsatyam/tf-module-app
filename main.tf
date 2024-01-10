@@ -46,7 +46,7 @@ resource "aws_iam_policy" "main" {
           "ssm:GetParameters",
           "ssm:GetParameter"
         ],
-        "Resource":
+        "Resource":local.policy_resources
       },
       {
         "Sid": "VisualEditor1",
