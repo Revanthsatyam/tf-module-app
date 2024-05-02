@@ -10,3 +10,5 @@ variable "desired_capacity" {}
 variable "max_size" {}
 variable "min_size" {}
 variable "subnet_ids" {}
+variable "zone_id" {}
+variable "alb_name" {}
