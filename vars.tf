@@ -13,4 +13,4 @@ variable "subnet_ids" {}
 variable "zone_id" {}
 variable "alb_name" {}
 variable "priority" {}
-variable "listener_arn" {}
+#variable "listener_arn" {}
