@@ -5,3 +5,8 @@ variable "vpc_id" {}
 variable "port" {}
 variable "sg_ingress_cidr" {}
 variable "ssh_ingress_cidr" {}
+variable "instance_type" {}
+variable "desired_capacity" {}
+variable "max_size" {}
+variable "min_size" {}
+variable "subnet_ids" {}
