@@ -5,5 +5,5 @@ data "aws_ami" "ami" {
 }
 
 data "dns_a_record_set" "main" {
-  host = var.private_listener
+  host = "internal-dev-private-alb-1366541837.us-east-1.elb.amazonaws.com"
 }
