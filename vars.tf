@@ -11,6 +11,8 @@ variable "max_size" {}
 variable "min_size" {}
 variable "subnet_ids" {}
 variable "zone_id" {}
-variable "alb_name" {}
 variable "priority" {}
-variable "listener" {}
+variable "private_alb_name" {}
+variable "private_listener" {}
+variable "public_alb_name" {}
+variable "public_listener" {}
