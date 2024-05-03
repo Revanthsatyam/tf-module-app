@@ -14,5 +14,3 @@ variable "zone_id" {}
 variable "priority" {}
 variable "private_alb_name" {}
 variable "private_listener" {}
-variable "public_alb_name" {}
-variable "public_listener" {}
