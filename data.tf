@@ -4,6 +4,6 @@ data "aws_ami" "ami" {
   owners      = ["973714476881"]
 }
 
-#data "dns_a_record_set" "main" {
-#  host = "internal-dev-private-alb-1366541837.us-east-1.elb.amazonaws.com"
-#}
+data "dns_a_record_set" "private_alb_name" {
+  host = var.private_alb_name
+}
