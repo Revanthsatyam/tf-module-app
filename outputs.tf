@@ -3,5 +3,5 @@
 #}
 
 output "aws_lb_target_group_public" {
-  value = aws_lb_target_group.public[0]
+  value = aws_lb_target_group.public
 }
