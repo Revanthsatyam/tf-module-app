@@ -83,9 +83,9 @@ resource "aws_iam_role" "main" {
     Version   = "2012-10-17"
     Statement = [
       {
-        Action    = "sts:AssumeRole"
-        Effect    = "Allow"
-        Sid       = ""
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
         Principal = {
           Service = "ec2.amazonaws.com"
         }
@@ -120,6 +120,16 @@ resource "aws_launch_template" "main" {
       component = var.component
       env       = var.env
     }))
+
+  block_device_mappings {
+    device_name = "/dev/sda1"
+
+    ebs {
+      volume_size = 10
+      encrypted   = true
+      kms_key_id  = var.kms_key_id
+    }
+  }
 
   tag_specifications {
     resource_type = "instance"
@@ -190,7 +200,7 @@ resource "aws_lb_listener_rule" "main" {
   condition {
     host_header {
       values = [
-        var.component == "frontend" ? "${var.env}.rdevops74.online" : "${var.component}-${var.env}.rdevops74.online"
+          var.component == "frontend" ? "${var.env}.rdevops74.online" : "${var.component}-${var.env}.rdevops74.online"
       ]
     }
   }
