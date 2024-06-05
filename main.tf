@@ -126,10 +126,10 @@ resource "aws_launch_template" "main" {
 
     ebs {
       volume_size           = 10
-      volume_type           = "gp2"
-      delete_on_termination = true
-      encrypted             = true
-      kms_key_id            = var.kms_key_id
+#       volume_type           = "gp2"
+#       delete_on_termination = true
+#       encrypted             = true
+#       kms_key_id            = var.kms_key_id
     }
   }
 
