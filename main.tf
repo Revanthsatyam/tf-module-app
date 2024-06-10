@@ -126,8 +126,8 @@ resource "aws_launch_template" "main" {
     device_name = "/dev/sda1"
 
     ebs {
-      volume_size           = 10
-      encrypted             = true
+      volume_size = 10
+      encrypted   = true
       #kms_key_id            = var.kms_key_id
     }
   }
@@ -160,6 +160,19 @@ resource "aws_autoscaling_group" "main" {
     key                 = "Monitor"
     value               = "yes"
     propagate_at_launch = true
+  }
+}
+
+resource "aws_autoscaling_policy" "asg-cpu-role" {
+  autoscaling_group_name    = aws_autoscaling_group.main.name
+  name                      = "CPULoadDetect"
+  policy_type               = "TargetTrackingScaling"
+  estimated_instance_warmup = 120
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 50.0
   }
 }
 
@@ -201,7 +214,8 @@ resource "aws_lb_listener_rule" "main" {
   condition {
     host_header {
       values = [
-          var.component == "frontend" ? "${var.env == "prod" ? "www" : var.env}.rdevops74.online" : "${var.component}-${var.env}.rdevops74.online"
+          var.component == "frontend" ? "${var.env == "prod" ? "www" : var.env}.rdevops74.online" :
+          "${var.component}-${var.env}.rdevops74.online"
       ]
     }
   }
